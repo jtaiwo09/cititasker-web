@@ -1,0 +1,233 @@
+@import "../../../assets/scss/variables";
+
+.wrapper {
+  padding: 64px 0;
+  position: relative;
+  display: block;
+  background: #f6f8fd;
+
+
+}
+
+.content {
+  margin: 16px auto;
+  width: 72%;
+  @media screen and (max-width: 768px) {
+    width: 95%;
+  }
+
+  h2 {
+    font-size: 32px;
+  }
+}
+
+.tabs {
+  display: flex;
+  margin-top: 30px;
+
+  span {
+    font-size: 22px;
+    font-family: museo_sans;
+    cursor: pointer;
+    font-weight: 500;
+    letter-spacing: -0.25px;
+    line-height: 30.8px;
+    vertical-align: center;
+    text-align: center;
+    word-spacing: 0px;
+    height: 34px;
+    margin: 0 22px 0 0;
+    padding: 0 0 16px 0;
+
+  }
+
+  span:hover {
+    color: rgb(0, 143, 180);
+    border-bottom: 2px solid rgb(0, 143, 180);
+  }
+
+  .active {
+    color: rgb(0, 143, 180) !important;
+    border-bottom: 2px solid rgb(0, 143, 180) !important;
+  }
+
+}
+
+.tabDescription {
+  padding: 30px 0px;
+
+  p {
+    margin: 0;
+    padding: 0;
+    font-family: museo_sans, "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 19.6px;
+    word-spacing: 0px;
+  }
+
+  color: #545A77;
+}
+
+.jobListWrapper {
+  width: 100%;
+}
+
+.jobRow {
+  //display: flex;
+  ////-webkit-transform: translateX(5%);
+  //-ms-transform: translateX(5%);
+  ////transform: translateX(5%);
+  //transform: matrix(1, 0, 0, 1, 288, 0);
+  //transition: all 0s ease 0s;
+}
+
+
+.jobCard {
+  margin: 10px;
+  background: white;
+  border-radius: 6px;
+  padding: 0 24px;
+  height: 150px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  color: $textBlack;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px;
+
+}
+
+.jobAvatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 34px;
+}
+
+.jobDes {
+  display: flex;
+  flex: 1;
+}
+
+.jobPrice {
+  font-size: 22px;
+  margin-left: 8px;
+}
+
+.star {
+  border-top: 1px solid #F6F8FD;
+  padding-top: 4px;
+  color: gold;
+  display: flex;
+  align-items: center;
+
+  span {
+    padding: 0;
+    color: #292B32;
+    margin: 0 0 0 8px;
+    line-height: 15.4px;
+    font-weight: 400;
+    font-size: 14px;
+  }
+
+}
+
+.cat {
+  //height: 16px;
+  border-bottom: 1px solid #F6F8FD;
+  padding-top: 12px;
+  padding-bottom: 4px;
+  margin: 0 0 10px;
+
+  p {
+    padding: 0;
+    margin: 0;
+    line-height: 15.4px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    font-size: 11px;
+    text-transform: uppercase;
+  }
+}
+
+
+.description {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  margin-left: 8px;
+  text-decoration: none solid rgb(41, 43, 50);
+  white-space: pre-line;
+  word-spacing: 0px;
+  color: #292B32;
+  height: 60px;
+  width: 160px;
+  overflow: hidden;
+}
+
+.afterPayWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 15px auto;
+  width: 75%;
+  padding: 30px;
+  border-radius: 10px;
+  background: $primary;
+
+
+  .afterPayImg{
+    width: 80px;
+  }
+}
+
+
+.playBtn{
+  border: none;
+  border-image-source: none;
+  border-image-slice: none;
+  border-image-repeat: none;
+  font-family: museo_sans,Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70px;
+  height: 70px;
+  background-size: contain;
+  background-image: url(https://airtasker.com/images/icons/svg/play.svg);
+  background-color: rgb(0, 143, 180);
+  cursor: pointer;
+  text-indent: -99999px;
+  transform-origin: center center;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 6px 12px 0px;
+  border-radius: 100%;
+  background-position: 50% center;
+  background-repeat: no-repeat;
+  transition: all 0.125s ease-out 0s;
+
+}
+
+.hwTitle{
+  color: rgb(41, 43, 50);
+  font-family: museo-bold;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+  padding: 0;
+  margin: 0;
+  font-weight: 300;
+}
+
+.hwDes{
+  color: rgb(41, 43, 50);
+  font-family: museo-regular;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+  font-weight: 300;
+  padding: 0;
+  margin: 0;
+}

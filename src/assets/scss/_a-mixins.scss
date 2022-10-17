@@ -1,0 +1,649 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass mixins.
+// -----------------------------------------------------------------------------
+
+// Display Vertically Middle //
+
+$border-radius:               .25rem !default;
+$border-radius-xl:            .35rem !default;
+$border-radius-lg:            .3rem !default;
+$border-radius-sm:            .2rem !default;
+
+@mixin vertical-middle() {
+  display: flex;
+  align-items: center;
+}
+
+// Display Horizontally Center //
+@mixin horizontal-middle() {
+  display: flex;
+  justify-content: center;
+}
+
+// Display Vertically & Horizontally Center //
+@mixin vertical-horizontal-middle() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Box Shadow //
+@mixin box-shadow($shadow) {
+  box-shadow: $shadow;
+  -webkit-box-shadow: $shadow;
+  -moz-box-shadow: $shadow;
+  -ms-box-shadow: $shadow;
+}
+
+// Horizontal Gradient //
+@mixin gradient-horizontal($start-color: #555, $end-color: #333, $start-percent: 0%, $end-percent: 100%) {
+  background-image: -webkit-linear-gradient(left, $start-color $start-percent, $end-color $end-percent); // Safari 5.1-6, Chrome 10+
+  background-image: -o-linear-gradient(left, $start-color $start-percent, $end-color $end-percent); // Opera 12
+  background-image: linear-gradient(to right, $start-color $start-percent, $end-color $end-percent); // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}', GradientType=1); // IE9 and down
+}
+
+// BlockQuote Mixins //
+@mixin blockquote($color) {
+  border-color: $color;
+  .blockquote-footer {
+    color: $color;
+  }
+}
+
+// generic transform //
+@mixin transform($transforms) {
+  -moz-transform: $transforms;
+  -o-transform: $transforms;
+  -ms-transform: $transforms;
+  -webkit-transform: $transforms;
+  transform: $transforms;
+}
+
+// rotate //
+@mixin rotate ($deg) {
+  @include transform(rotate(#{$deg}deg));
+}
+
+// scale //
+@mixin scale($scale) {
+  @include transform(scale($scale));
+}
+// translate //
+@mixin translate ($x, $y) {
+  @include transform(translate($x, $y));
+}
+
+// skew //
+@mixin skew ($x, $y) {
+  @include transform(skew(#{$x}deg, #{$y}deg));
+}
+
+// Badge outlines //
+@mixin badge-variable-outlines($color) {
+  color: $color;
+  border: 1px solid $color;
+}
+
+// Beadcrumb variations //
+@mixin breadcrumb-variations($color){
+  background-color: mix($white, $color, 80%);
+  border-color: $color;
+
+  .breadcrumb-item {
+    color: $color;
+
+    &:before {
+      color: inherit;
+    }
+
+    a {
+      color: inherit;
+    }
+  }
+
+  &.breadcrumb-arrow {
+    background: transparent;
+
+    .breadcrumb-item {
+      background: mix($white, $color, 80%);
+
+      a {
+        color: $color;
+        border: none;
+
+        &:before {
+          border-left-color: mix($white, $color, 80%);
+        }
+      }
+
+      span {
+        color: $color;
+      }
+
+      &:last-child {
+        background: transparent;
+      }
+    }
+  }
+}
+
+// Social Media Buttons //
+@mixin social-button($color) {
+  background: $color;
+  color: $white;
+
+  &:hover,
+  &:focus {
+    background: darken($color, 10%);
+    color: $white;
+  }
+  &.btn-social-icon-text {
+    padding: 0 1.5rem 0 0;
+    background: lighten($color, 10%);
+    i {
+      background: $color;
+      padding: .75rem;
+      display: inline-block;
+      margin-right: 1.5rem;
+    }
+  }
+}
+
+// Social Media Outlined Buttons //
+@mixin social-outline-button($color) {
+  border: 1px solid $color;
+  background: transparent;
+  color: $color;
+  &:hover {
+    background: $color;
+    color: $white;
+  }
+}
+
+// Button Inverse Variations //
+@mixin button-soft-variant($color, $color-hover: $white) {
+  background-color: mix($card-bg, $color, 80%);
+  background-image: none;
+  border-color: rgba($color, 0);
+  &:not(.btn-soft-light) {
+    color: $color;
+  }
+  @include hover {
+    color: $color-hover;
+    background-color: $color;
+    border-color: $color;
+  }
+
+  &.focus,
+  &:focus {
+    box-shadow: 0 0 0 3px rgba($color, .5);
+  }
+
+  &.disabled,
+  &:disabled {
+    color: $color;
+    background-color: transparent;
+  }
+
+  &.active,
+  &:active,
+  .show > &.dropdown-toggle {
+    color: $color-hover;
+    background-color: $color;
+    border-color: $color;
+  }
+}
+
+// Button Inverse Variations //
+@mixin button-flash-variant($color, $color-hover: $white) {
+  padding: 5px;
+  background-image: none;
+  border:none;
+  color: mix($color, gray, 70%);
+  &:not(.btn-flash-light) {
+    color: mix(#b0afb7, $color, 75%);
+  }
+  &[aria-expanded="true"]{
+    background-color: mix($color, $card-bg, 10%);
+    color: $color;
+  }
+  @include hover {
+    background-color: mix($color, $card-bg, 10%);
+    color: mix($color, #000, 10%);;
+    border:none;
+    &:not(.btn-flash-light) {
+      color: $color;
+    }
+  }
+
+  &.focus,
+  &:focus {
+    box-shadow: none;
+  }
+
+  &.disabled,
+  &:disabled {
+    color: $color;
+    background-color: transparent;
+  }
+
+  &.active,
+  &:active,
+  .show > &.dropdown-toggle {
+    color: $color;
+    background-color: mix($color, $card-bg, 10%);
+    border: none;
+  }
+}
+
+@mixin button-outline-variant($color, $color-hover: color-yiq($color), $active-background: $color, $active-border: $color) {
+  color: $color;
+  border-color: $color;
+
+  @include hover {
+    color: $color-hover;
+    background-color: $active-background;
+    border-color: $active-border;
+  }
+
+  &:focus,
+  &.focus {
+    box-shadow: 0 0 0 $btn-focus-width rgba($color, .5);
+  }
+
+  &.disabled,
+  &:disabled {
+    color: $color;
+    background-color: transparent;
+  }
+
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active,
+  .show > &.dropdown-toggle {
+    color: color-yiq($active-background);
+    background-color: $active-background;
+    border-color: $active-border;
+
+    &:focus {
+      // Avoid using mixin so we can pass custom focus shadow properly
+      @if $enable-shadows and $btn-active-box-shadow != none {
+        box-shadow: $btn-active-box-shadow, 0 0 0 $btn-focus-width rgba($color, .5);
+      } @else {
+        box-shadow: 0 0 0 $btn-focus-width rgba($color, .5);
+      }
+    }
+  }
+}
+
+// Button Inverse Border Variations //
+@mixin button-flash-border-variant($color, $color-hover: $white) {
+  background-image: none;
+  border:none;
+  color: mix($color, gray, 70%);
+  border: 1px solid mix($color, gray, 70%);
+  &:not(.btn-flash-border-light) {
+    color: mix(#b0afb7, $color, 75%);
+    border: 1px solid mix(#b0afb7, $color, 75%);
+  }
+  &[aria-expanded="true"]{
+    background-color: mix($color, #fff, 10%);
+    border: 1px solid $color;
+    color: $color;
+  }
+  @include hover {
+    background-color: mix($color, $card-bg, 10%);
+    color: mix($color, #000, 10%);
+    border: 1px solid transparent;
+    &:not(.btn-flash-border-light) {
+      color: $color;
+    }
+  }
+
+  &.focus,
+  &:focus {
+    box-shadow: none;
+    border: 1px solid transparent;
+  }
+
+  &.disabled,
+  &:disabled {
+    color: $color;
+    background-color: transparent;
+    border: 1px solid transparent;
+  }
+
+  &.active,
+  &:active,
+  .show > &.dropdown-toggle {
+    color: $color;
+    background-color: mix($color, $card-bg, 10%);
+    border: 1px solid transparent;
+  }
+}
+
+// Button Shadow Variations //
+@mixin button-shadow-variant($color, $color-hover: $white) {
+  background-image: none;
+  border:none;
+  color: #a09fa7;
+  @include box-shadow(0px 0px 2px 2px rgba(#a09fa7, 0.3));
+  &:not(.btn-flash-border-light) {
+    color: #a09fa7;
+    border: 1px solid transparent;
+  }
+  &[aria-expanded="true"]{
+    background-color: $white;
+    border: 1px solid transparent;
+    color: #a09fa7;
+  }
+  @include hover {
+    background-color: $card-bg;
+    color: $color;
+    border: 1px solid transparent;
+    @include box-shadow(0px 0px 2px 2px rgba(#a09fa7, 0.3));
+    &:not(.btn-flash-border-light) {
+      color: $color;
+    }
+  }
+
+  &.focus,
+  &:focus {
+    border: 1px solid transparent;
+    @include box-shadow(0px 0px 2px 2px rgba(#a09fa7, 0.3));
+  }
+
+  &.disabled,
+  &:disabled {
+    color: $color;
+    background-color: transparent;
+    border: 1px solid transparent;
+  }
+
+  &.active,
+  &:active,
+  .show > &.dropdown-toggle {
+    color: $color;
+    background-color: $card-bg;
+    border: 1px solid transparent;
+    @include box-shadow(0px 0px 2px 2px rgba(#a09fa7, 0.3));
+  }
+}
+
+
+// Card Inverse Variations //
+@mixin card-inverse-variant($bg, $border, $color) {
+  background: $bg;
+  border: 1px solid $border;
+  color: $color;
+}
+
+// Transition Duration //
+@mixin transition-duration($duration) {
+  -moz-transition-property:    $duration;
+  -o-transition-property:      $duration;
+  -webkit-transition-property: $duration;
+  transition-property:         $duration;
+}
+
+// Transition Property //
+@mixin transition-property($property) {
+  -moz-transition-property:    $property;
+  -o-transition-property:      $property;
+  -webkit-transition-property: $property;
+  transition-property:         $property;
+}
+
+// Transform origin //
+@mixin transform-origin ($origin) {
+  moz-transform-origin: $origin;
+  -o-transform-origin: $origin;
+  -ms-transform-origin: $origin;
+  -webkit-transform-origin: $origin;
+  transform-origin: $origin;
+}
+
+// Pagination variations //
+@mixin pagination-variants($color) {
+  .page-item {
+    &.active {
+      .page-link {
+        background: $color;
+        border-color: $color;
+      }
+    }
+
+    .page-link {
+      &:hover {
+        background: lighten($color,5%);
+        border-color: $color;
+        color: $white;
+      }
+    }
+  }
+}
+
+// Tooltip color  variations //
+@mixin tooltip-variant($color) {
+  .tooltip-inner {
+    background:  map-get($theme-colors, $color);
+    color: $white;
+  }
+  &.bs-tooltip-top {
+    .arrow::before {
+      border-top-color: map-get($theme-colors, $color);
+    }
+  }
+  &.bs-tooltip-right {
+    .arrow::before {
+      border-right-color: map-get($theme-colors, $color);
+    }
+  }
+  &.bs-tooltip-bottom {
+    .arrow::before {
+      border-bottom-color: map-get($theme-colors, $color);
+    }
+  }
+  &.bs-tooltip-left {
+    .arrow::before {
+      border-left-color: map-get($theme-colors, $color);
+    }
+  }
+}
+
+// Ellipsis //
+@mixin ellipsor {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 100%;
+  white-space: nowrap;
+}
+
+@mixin link-effect-1($default, $hover) {
+  color: $default;
+
+  &:hover {
+    color: $hover;
+    text-decoration: none;
+  }
+}
+
+@mixin link-effect-2($color, $effect) {
+  color: $color;
+  &:hover {
+    color: $color;
+    text-decoration: $effect;
+  }
+}
+
+@mixin anchor-icon-hover-effect($bg-color, $icon-color){
+  &:hover {
+    background-color: $bg-color;
+    svg, i {
+      color: $icon-color;
+    }
+  }
+}
+
+// Set Background color //
+@mixin set-two-level-color($class, $map) {
+  @each $parentindex, $innermap in $map {
+    @each $index, $hex in $innermap {
+      .#{$class}-#{$parentindex}-indicator-#{$index} {
+        background: $hex;
+      }
+    }
+  }
+}
+
+// Set Background color //
+@mixin set-one-level-color($class, $map) {
+  @each $index, $hex in $map {
+    .#{$class}-#{$index} {
+      background: $hex;
+    }
+  }
+
+}
+// Menu Style //
+@mixin menu-style {
+  @include media-breakpoint-up(md) {
+    position: absolute;
+    top: 46px;
+    z-index: 999;
+    border-top: none;
+    border-radius: 4px;
+    box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.08);
+    -webkit-box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.08);
+    li {
+      a {
+        position: relative;
+        padding-left: 20px;
+        &::before {
+          position: absolute;
+          content: "";
+          width: 3px;
+          height: 3px;
+          border-radius: 100%;
+          background: theme-color(secondary);
+          top: 12px;
+          left: 0;
+        }
+      }
+    }
+  }
+  @include media-breakpoint-down(md) {
+    position: relative;
+    top:0;
+    box-shadow: none;
+  }
+}
+
+$enable-caret:              true !default;
+$enable-rounded:            true !default;
+$enable-shadows:            true !default;
+$enable-gradients:          false !default;
+$enable-transitions:        true !default;
+$enable-grid-classes:       true !default;
+$enable-print-styles:       true !default;
+
+@function valid-radius($radius) {
+  $return: ();
+  @each $value in $radius {
+    @if type-of($value) == number {
+      $return: append($return, max($value, 0));
+    } @else {
+      $return: append($return, $value);
+    }
+  }
+  @return $return;
+}
+
+@mixin border-radius($radius: $border-radius, $fallback-border-radius: false) {
+  @if $enable-rounded {
+    border-radius: valid-radius($radius);
+  }
+  @else if $fallback-border-radius != false {
+    border-radius: $fallback-border-radius;
+  }
+}
+
+@mixin border-top-radius($radius) {
+  @if $enable-rounded {
+    border-top-left-radius: valid-radius($radius);
+    border-top-right-radius: valid-radius($radius);
+  }
+}
+
+@mixin border-right-radius($radius) {
+  @if $enable-rounded {
+    border-top-right-radius: valid-radius($radius);
+    border-bottom-right-radius: valid-radius($radius);
+  }
+}
+
+@mixin border-bottom-radius($radius) {
+  @if $enable-rounded {
+    border-bottom-right-radius: valid-radius($radius);
+    border-bottom-left-radius: valid-radius($radius);
+  }
+}
+
+@mixin border-left-radius($radius) {
+  @if $enable-rounded {
+    border-top-left-radius: valid-radius($radius);
+    border-bottom-left-radius: valid-radius($radius);
+  }
+}
+
+@mixin border-top-left-radius($radius) {
+  @if $enable-rounded {
+    border-top-left-radius: valid-radius($radius);
+  }
+}
+
+@mixin border-top-right-radius($radius) {
+  @if $enable-rounded {
+    border-top-right-radius: valid-radius($radius);
+  }
+}
+
+@mixin border-bottom-right-radius($radius) {
+  @if $enable-rounded {
+    border-bottom-right-radius: valid-radius($radius);
+  }
+}
+
+@mixin border-bottom-left-radius($radius) {
+  @if $enable-rounded {
+    border-bottom-left-radius: valid-radius($radius);
+  }
+}
+
+$transition-base:             all .15s ease !default;
+@mixin transition($transition...) {
+  @if length($transition) == 0 {
+    $transition: $transition-base;
+  }
+
+  @if length($transition) > 1 {
+    @each $value in $transition {
+      @if $value == null or $value == none {
+        @warn "The keyword 'none' or 'null' must be used as a single argument.";
+      }
+    }
+  }
+
+  @if $enable-transitions {
+    @if nth($transition, 1) != null {
+      transition: $transition;
+    }
+
+    @if  nth($transition, 1) != null and nth($transition, 1) != none {
+      @media (prefers-reduced-motion: reduce) {
+        transition: none;
+      }
+    }
+  }
+}

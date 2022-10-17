@@ -1,0 +1,48 @@
+//Define Color
+
+$primary: #13B5EA;
+$secondary: #236F8E;
+$danger: #EC514B;
+$success: #27C229;
+$warning: #F4BE36;
+$lightGray: ‘ #F3F5F5;
+$black: #292B32;
+$gray: #CAD7DC;
+$gradient: #0798BF;
+
+
+$primaryDark: #005690;
+$primaryLight: #94ffff;
+
+$secondaryDark: #00245e;
+$secondaryLight: #005690;
+
+$textBlack: #292b32;
+
+$mobile: 480px;
+$tablet: 769px;
+$desktop: 1200px;
+
+//Fonts
+$font-family-base: "Helvetica Neue", Helvetica, Arial, sans-serif;
+//Fonts 100
+$museosansregular100: 'museosansregular100', $font-family-base;
+$museosansitalic100: 'museosansitalic100', $font-family-base;
+//Fonts 300
+$museosansitalic300: 'museosansitalic300', $font-family-base;
+$museosansregular300: 'museosansregular300', $font-family-base;
+//Fonts 500
+$museosansitalic500: 'museosansitalic500', $font-family-base;
+$museosansregular500: 'museosansregular500', $font-family-base;
+//Fonts 700
+$museosansitalic700: 'museosansitalic700', $font-family-base;
+$museosansregular700: 'museosansregular700', $font-family-base;
+//Fonts 900
+$museosansitalic900: 'museosansitalic900', $font-family-base;
+$museosansregular900: 'museosansregular900', $font-family-base;
+$timeline-icon-bg-size: 45px;
+$timeline-icon-size: 20px;
+$timeline-header-title-color: $primaryLight;
+$timeline-content-color: $textBlack;
+$timeline-sub-content-color: $gray;
+$timeline-border-color: $lightGray;

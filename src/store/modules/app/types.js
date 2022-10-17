@@ -1,0 +1,15 @@
+export const IS_LOADING = 'app/isLoading';
+export const NEW_TASK = 'app/task';
+export const EDIT_OFFER = 'app/myoffer';
+export const EDIT_OFFER_TOGGLE = 'app/toggle_edit_offer';
+export const SHOW_NAV_SETTING = 'app/navSettings';
+export const SHOW_TASK = 'app/show_task';
+export const TASK_TITLE = 'app/task_title';
+export const TASK_DESCRIPTION = 'app/task_description';
+export const SET_REFERER = 'app/referer';
+export const SHOW_OFFER = 'app/show_offer';
+export const SHOW_ACCOUNT_UPDATE = 'app/account_update';
+export const ERROR = 'app/error';
+export const IS_CONNECTED = 'app/isConnected';
+export const SHOW_LOADER = 'app/showLoader';
+export const SET_APP_STATE = 'app/update_app_state';

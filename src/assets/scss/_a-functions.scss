@@ -1,0 +1,10 @@
+// FUNCTIONS //
+@function social-color($key: "twitter") {
+  @return map-get($social-colors, $key);
+}
+
+@function soft-color($value) {
+  @return mix(white, $value, 50%);
+}
+
+

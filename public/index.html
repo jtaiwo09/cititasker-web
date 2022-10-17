@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <link rel="icon" href="%PUBLIC_URL%/icon.png"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta name="theme-color" content="#000000"/>
+    <meta name="description" content="Web site created using create-react-app"/>
+    <!--    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />-->
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json"/>
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>Cititasker Web</title>
+</head>
+<body>
+<noscript>You need to enable JavaScript to run this app.</noscript>
+<div id="root"></div>
+<!--
+  This HTML file is a template.
+  If you open it directly in the browser, you will see an empty page.
+
+  You can add webfonts, meta tags, or analytics to this file.
+  The build step will place the bundled scripts into the <body> tag.
+
+  To begin the development, run `npm start` or `yarn start`.
+  To create a production bundle, use `npm run build` or `yarn build`.
+-->
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdHMB87WgSAdWlbEiORryX6ttcBiIwJC8&libraries=places"></script>
+<script src="https://js.paystack.co/v1/inline.js"></script>
+<script>
+    function payWithPaystack({email, amount, phone, id}, success, error) {
+        var handler = PaystackPop.setup({
+            key: 'pk_test_bf7f7fd26a659d22a09510c20e98d7bc55151855', email, amount: amount * 100,
+            currency: "NGN",
+            metadata: {
+                custom_fields: [
+                    {
+                        display_name: "Mobile Number",
+                        variable_name: "mobile_number",
+                        value: phone
+                    },
+                    {
+                        display_name: "Offer Id",
+                        variable_name: "offer_id",
+                        value: id
+                    }
+                ]
+            },
+            callback: function (response) {
+                if (success) success(response)
+            },
+            onClose: function () {
+                if (error) error()
+            }
+        });
+        handler.openIframe();
+    }
+
+    window.payWithPaystack = payWithPaystack;
+</script>
+<script type="text/javascript">
+    (function () {
+        var options = {
+            whatsapp: "+2349136369397", // WhatsApp number
+            call_to_action: "Message us", // Call to action
+            position: "right", // Position may be 'right' or 'left'
+        };
+        var proto = document.location.protocol, host = "getbutton.io", url = proto + "//static." + host;
+        var s = document.createElement('script');
+        s.type = 'text/javascript';
+        s.async = true;
+        s.src = url + '/widget-send-button/js/init.js';
+        s.onload = function () {
+            WhWidgetSendButton.init(host, proto, options);
+        };
+        var x = document.getElementsByTagName('script')[0];
+        x.parentNode.insertBefore(s, x);
+    })();
+
+    function add_chatinline() {
+        var hccid = 41005644;
+        var nt = document.createElement("script");
+        nt.async = true;
+        nt.src = "https://www.mylivechat.com/chatinline.aspx?hccid=" + hccid;
+        var ct = document.getElementsByTagName("script")[0];
+        ct.parentNode.insertBefore(nt, ct);
+    }
+
+    add_chatinline();
+</script>
+</body>
+</html>
